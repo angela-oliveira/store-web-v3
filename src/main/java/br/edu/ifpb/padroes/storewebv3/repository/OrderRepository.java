@@ -10,6 +10,7 @@ public class OrderRepository {
 
     private List<Order> orderList = new ArrayList<>();
 
+    private static OrderRepository instance;
     public List<Order> getOrderList() {
         return orderList;
     }
@@ -23,8 +24,11 @@ public class OrderRepository {
     }
 
 	public static OrderRepository getInstance() {
-		// TODO Auto-generated method stub
-		return null;
+        if (instance == null) {
+            instance = new OrderRepository();
+        }
+
+        return instance;
 	}
 
 }

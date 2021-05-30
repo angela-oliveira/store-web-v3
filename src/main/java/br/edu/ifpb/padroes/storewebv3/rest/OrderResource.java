@@ -15,8 +15,8 @@ public class OrderResource {
 
     private final OrderFacade orderFacade;
 
-    public OrderResource() {
-        orderFacade = new OrderFacade(null, null);
+    public OrderResource(OrderFacade orderFacade) {
+    	this.orderFacade = orderFacade;
     }
 
     @PostMapping("/")

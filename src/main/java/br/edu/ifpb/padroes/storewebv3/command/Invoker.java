@@ -2,23 +2,23 @@ package br.edu.ifpb.padroes.storewebv3.command;
 
 import org.springframework.stereotype.Component;
 
-import java.util.Stack;
+import java.util.ArrayList;
 
 @Component
 public class Invoker {
-    private Stack<Command> commands;
-
+    private ArrayList<Command> commands = new ArrayList<Command>();;
+    
     public void addCommand(Command c)
     {
-        commands.push(c);
+        commands.add(c);
     }
 
     public void executeCommands()
     {
-        for(Command i: commands)
+        for(int i=0; i<commands.size(); i++)
         {
-            Command c = commands.pop();
-            c.execute();
+        	commands.get(i).execute();
+        	commands.remove(i);
         }
     }
 }

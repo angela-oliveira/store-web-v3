@@ -1,5 +1,6 @@
 package br.edu.ifpb.padroes.storewebv3.payment;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.stripe.Stripe;
@@ -22,6 +23,7 @@ public class StripeApi implements Componente {
 
 	private Mediator mediador;
 
+	@Autowired
 	public StripeApi(StoreConfigurationProperties storeConfigurationProperties) {
 		this.storeConfigurationProperties = storeConfigurationProperties;
 	}

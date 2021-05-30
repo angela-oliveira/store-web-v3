@@ -25,7 +25,8 @@ public class OrderResource {
 
     @PostMapping("/")
     public ResponseEntity<Void> createOrder(@RequestBody Order order) {
-        CreateOrderCommand c = new CreateOrderCommand(orderFacade, order);
+        CreateOrderCommand c = new CreateOrderCommand(orderFacade);
+        c.setOrder(order);
         this.invoker.addCommand(c);
         this.invoker.executeCommands();
         return ResponseEntity.ok().build();

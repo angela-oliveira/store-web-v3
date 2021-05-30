@@ -9,18 +9,18 @@ import java.util.List;
 @Component
 public class ProductRepository {
 
-    private List<Product> productList = new ArrayList<>();
+	private List<Product> productList = new ArrayList<>();
 
-    public List<Product> getProductList() {
-        return productList;
-    }
+	public List<Product> getProductList() {
+		return productList;
+	}
 
-    public boolean add(Product element) {
-        return productList.add(element);
-    }
+	public boolean add(Product element) {
+		return productList.add(element);
+	}
 
-    public boolean remove(Product product) {
-        return productList.remove(product);
-    }
+	public boolean remove(Product product) {
+		return productList.remove(product);
+	}
 
 }

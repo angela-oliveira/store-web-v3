@@ -32,11 +32,11 @@ public class Order {
     }
 
     public Date getCreated() {
-        return created;
+      return created;
     }
 
     public void setCreated(Date created) {
-        this.created = created;
+    	this.created = created;
     }
 
     public boolean isProcessed() {

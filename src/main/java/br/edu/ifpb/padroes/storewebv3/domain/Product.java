@@ -1,5 +1,7 @@
 package br.edu.ifpb.padroes.storewebv3.domain;
 
+
+
 public class Product {
 
     private Long id;
@@ -7,6 +9,7 @@ public class Product {
     private Long price;
     private String title;
     private String description;
+    
 
     public Long getId() {
         return id;
@@ -47,4 +50,11 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+
+	public void accept(DescontoV descontoV) {
+		descontoV.visit(this);
+		
+	}
+	
+
 }

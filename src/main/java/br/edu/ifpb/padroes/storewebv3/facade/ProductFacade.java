@@ -1,4 +1,4 @@
-package facade;
+package br.edu.ifpb.padroes.storewebv3.facade;
 
 import java.util.List;
 

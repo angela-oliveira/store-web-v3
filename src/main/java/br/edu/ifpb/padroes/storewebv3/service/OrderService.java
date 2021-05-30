@@ -14,8 +14,7 @@ public class OrderService {
     private OrderRepository orderRepository = OrderRepository.getInstance();
 
 	public void createOrder(Order order) {
-		// TODO Auto-generated method stub
-		
+		orderRepository.add(order);
 	}
 
     public List<Order> getOrderList() {

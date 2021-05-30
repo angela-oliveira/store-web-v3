@@ -1,26 +1,30 @@
 package br.edu.ifpb.padroes.storewebv3.payment;
 
-import br.edu.ifpb.padroes.storewebv3.config.StoreConfigurationProperties;
-import br.edu.ifpb.padroes.storewebv3.domain.Order;
-import br.edu.ifpb.padroes.storewebv3.domain.Product;
+import org.springframework.stereotype.Component;
+
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.model.Sku;
 import com.stripe.param.PaymentIntentCreateParams;
 import com.stripe.param.SkuCreateParams;
-import org.springframework.stereotype.Component;
+
+import br.edu.ifpb.padroes.storewebv3.config.StoreConfigurationProperties;
+import br.edu.ifpb.padroes.storewebv3.domain.Order;
+import br.edu.ifpb.padroes.storewebv3.domain.Product;
+import br.edu.ifpb.padroes.storewebv3.mediator.Mediator;
+import br.edu.ifpb.padroes.storewebv3.service.OrderService;
 
 @Component
-public class StripeApi {
+public class StripeApi implements Mediator {
 
     private final StoreConfigurationProperties storeConfigurationProperties;
-
+    
     public StripeApi(StoreConfigurationProperties storeConfigurationProperties) {
         this.storeConfigurationProperties = storeConfigurationProperties;
     }
 
-    public PaymentIntent createOrder(Order order) {
+    public PaymentIntent createOrder() {
         try {
             Stripe.apiKey = storeConfigurationProperties.getStripeKey();
             PaymentIntentCreateParams params = PaymentIntentCreateParams.builder()
@@ -46,6 +50,11 @@ public class StripeApi {
         }
         return null;
     }
+
+	@Override
+	public void notify(OrderService orderService) {
+            createOrder();
+	}
 
 
 }

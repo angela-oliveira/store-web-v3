@@ -19,6 +19,7 @@ public class OrderFacade {
 	public void createOrder(Order order) {
 
         this.orderService.createOrder(order);
+        this.orderService.processPayment();
 		
 	}
     public List<Order> getOrders() {

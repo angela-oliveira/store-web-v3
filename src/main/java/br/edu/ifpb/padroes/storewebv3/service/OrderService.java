@@ -14,25 +14,26 @@ import br.edu.ifpb.padroes.storewebv3.repository.OrderRepository;
 
 @Service
 public class OrderService {
-	
-    Mediator mediator = new ConcreteMediator();
 
-	
-    private OrderRepository orderRepository = OrderRepository.getInstance();
-    
-    public void processPayment() {
-        mediator.notify(this);
-    }
+	Mediator mediator = new ConcreteMediator();
 
-	public void createOrder(Order order) {
-			
-		 for (OrderItem item: order.getItems()) {
-	            Product product = item.getProduct();
-	            product.accept(new DescontoV());
-	        }
-		 System.out.println(order.getId().toString());
+	private OrderRepository orderRepository = OrderRepository.getInstance();
+
+	public void processPayment() {
+		mediator.notify(this);
 	}
 
-    
+	public void createOrder(Order order) {
+
+		for (OrderItem item : order.getItems()) {
+			Product product = item.getProduct();
+			product.accept(new DescontoV());
+		}
+		System.out.println(order.getId().toString());
+	}
+
+	public List<Order> getOrderList() {
+		return orderRepository.getOrderList();
+	}
 
 }

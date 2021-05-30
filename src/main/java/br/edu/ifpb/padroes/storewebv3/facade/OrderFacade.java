@@ -10,21 +10,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderFacade {
 
-    private final OrderService orderService;
+	private final OrderService orderService;
 
-    public OrderFacade(OrderService orderService) {
-        this.orderService  = orderService;
-    }
+	public OrderFacade(OrderService orderService) {
+		this.orderService = orderService;
+	}
 
 	public void createOrder(Order order) {
 
-        this.orderService.createOrder(order);
-        this.orderService.processPayment();
-		
-	}
-    public List<Order> getOrders() {
-        return orderService.getOrderList();
-    }
+		this.orderService.createOrder(order);
 
+	}
+
+	public List<Order> getOrders() {
+		return orderService.getOrderList();
+	}
 
 }
